@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Todos API', type: request do
+RSpec.describe TodosController do # changed from RSpec.describe 'Todos API', type: :request do
   # initialize test data
   let!(:todos) { create_list(:todo, 10) }
   let(:todo_id) { todos.first.id }
