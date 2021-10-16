@@ -79,4 +79,20 @@ RSpec.describe 'Todos API', type: request do
     end
   end
 
+  # Test suire for PUT /todos/:id
+  describe 'PUT /todos/:id' do
+    let(:valid_attributes) { { title: 'Shopping'} }
+
+    context 'when the record exists' do
+      before { put "/todos/#{todo_id}", params: valid_attributes }
+
+      it 'updates the record' do
+        expect(response.body).to be_empty
+      end
+
+      it 'returns HTTP status code 204' do
+        expect(response).to have_http_status(204)
+      end
+    end
+  end
 end
