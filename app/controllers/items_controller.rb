@@ -1,9 +1,10 @@
 class ItemsController < ApplicationController
   before_action :set_todo
   before_action :set_todo_item, only: [:show, :update, :destroy]
+
   # GET /todos/:todo_id/items
   def index
-    json_response(@todos.items)
+    json_response(@todo.items)
   end
 
   # GET /todos/:todo_id/items/:id
@@ -31,15 +32,15 @@ class ItemsController < ApplicationController
 
   private
 
+  def item_params
+    params.permit(:name, :done)
+  end
+
   def set_todo
-    @todos = Todo.find(params[:todo_id])
+    @todo = Todo.find(params[:todo_id])
   end
 
   def set_todo_item
     @item = @todo.items.find_by!(id: params[:id]) if @todo
-  end
-
-  def item_params
-    params.permit(:name, :done)
   end
 end
