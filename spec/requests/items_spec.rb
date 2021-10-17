@@ -1,6 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe Item, type: :model do
+RSpec.describe ItemsController do
+  # Initialize the test data
   let!(:todo) { create(:todo) }
   let!(:items) { create_list(:item, 20, todo_id: todo.id) }
   let(:todo_id) { todo.id }
@@ -8,7 +9,7 @@ RSpec.describe Item, type: :model do
 
   # Test suite for GET /todos/:todo_id/items
   describe 'GET /todos/:todo_id/items' do
-    before { get "/todos/#{todo.id}/items" }
+    before { get "/todos/#{todo_id}/items" }
 
     context 'when todo exists' do
       it 'returns status code 200' do
@@ -21,8 +22,10 @@ RSpec.describe Item, type: :model do
     end
 
     context 'when todo does not exist' do
+      let(:todo_id) { 0 }
+
       it 'returns status code 404' do
-        expect(response).to m
+        expect(response).to have_http_status(404)
       end
 
       it 'returns a not found message' do
@@ -113,7 +116,7 @@ RSpec.describe Item, type: :model do
     end
   end
 
-   # Test suite for DELETE /todos/:id
+  # Test suite for DELETE /todos/:id
   describe 'DELETE /todos/:id' do
     before { delete "/todos/#{todo_id}/items/#{id}" }
 
