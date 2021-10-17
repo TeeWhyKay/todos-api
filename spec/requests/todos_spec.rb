@@ -17,7 +17,7 @@ RSpec.describe TodosController do # changed from RSpec.describe 'Todos API', typ
     end
 
     it 'returns status code 200' do
-      expect(reponse).to have_http_status(200)
+      expect(response).to have_http_status(200)
     end
   end
 
