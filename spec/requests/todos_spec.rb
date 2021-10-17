@@ -98,7 +98,7 @@ RSpec.describe TodosController do # changed from RSpec.describe 'Todos API', typ
 
   # Test suite for DELETE /todos/:id
   describe 'DELETE /todos/:id' do
-    before { delete "todos/#{todo_id}" }
+    before { delete "/todos/#{todo_id}" }
 
     it 'returns status code 204' do
       expect(response).to have_http_status(204)
