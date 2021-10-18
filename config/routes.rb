@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   resources :todos, only: [:index, :show, :create, :update, :destroy] do
     resources :items, only: [:index, :show, :create, :update, :destroy]
   end
+
+  post 'auth/login', to: 'authentication#authenticate'
 end
