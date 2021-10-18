@@ -29,6 +29,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # bcrypt() is a sophisticated and secure hash algorithm designed by The OpenBSD project for hashing passwords. The bcrypt Ruby gem provides a simple wrapper for safely handling passwords.
 gem 'bcrypt', '~> 3.1.7'
 
+# JSON Web TOken for token-based authentication
+gem 'jwt'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
